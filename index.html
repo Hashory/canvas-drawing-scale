@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Resized canvas drawing</title>
+
+	<style>
+		figure {
+			display: inline-block;
+			margin: 10px;
+			width: 500px;
+		}
+
+		.canvas-container {
+			border: 1px solid black;
+			position: relative;
+		}
+
+		canvas {
+			position: absolute;
+			touch-action: none;
+			transform-origin: 0 0;
+		}
+
+		figcaption {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Resized canvas drawing</h1>
+	<p><a href="https://github.com/hashory/canvas-drawing-scale">Github Source Code</a></p>
+	<p>Browser-UserAgent: <span id="useragent"></span></p>
+	<p>Test the performance impact of different canvas scales.</p>
+	<div>
+		<figure>
+			<div class="canvas-container" style="width: 500px; height: 500px;">
+				<canvas id="canvas1" width="500" height="500"></canvas>
+			</div>
+			<figcaption>Original Canvas (Scale 1x)</figcaption>
+		</figure>
+		<figure>
+			<div class="canvas-container" style="width: calc(500px * 0.734); height: calc(500px * 0.734);">
+				<canvas id="canvas2" width="500" height="500" style="scale: 0.734;"></canvas>
+			</div>
+			<figcaption>CSS Resized Canvas (Scale 0.734x)</figcaption>
+		</figure>
+		<figure>
+			<div class="canvas-container" style="width: calc(500px * 0.5); height: calc(500px * 0.5);">
+				<canvas id="canvas3" width="500" height="500" style="scale: 0.5;"></canvas>
+			</div>
+			<figcaption>CSS Resized Canvas (Scale 0.5x)</figcaption>
+		</figure>
+	</div>
+	<script>
+		document.getElementById('useragent').textContent = navigator.userAgent;
+	</script>
+	<script src="main.js" type="module"></script>
+</body>
+
+</html>
